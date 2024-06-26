@@ -1,30 +1,37 @@
 <?php
-class Cibo extends Prodotto{
-    private $ingredienti;
-    private $nutrizione;
+//require nutritional
+require_once __DIR__ . '/../NutritionalInformation/NutritionalInformation.php';
 
-    public function __construct($id, $nome, $prezzo, $immagine, $categoria, $tipologia, $ingredienti, $nutrizione) {
+
+class Cibo extends Prodotto
+{
+
+    use NutritionalInformation;
+
+    public function __construct($id, $nome, $prezzo, $immagine, $categoria, $tipologia, $ingredienti, $nutrizione)
+    {
         parent::__construct($id, $nome, $prezzo, $immagine, $categoria, $tipologia);
-        $this->ingredienti = $ingredienti;
-        $this->nutrizione = $nutrizione;
+        $this->setIngredienti($ingredienti);
+        $this->setNutrizione($nutrizione);
     }
 
-    public function getIngredienti() {
+    public function getIngredienti()
+    {
         return $this->ingredienti;
     }
 
-    public function setIngredienti($ingredienti) {
+    public function setIngredienti($ingredienti)
+    {
         $this->ingredienti = $ingredienti;
     }
 
-    public function getNutrizione() {
+    public function getNutrizione()
+    {
         return $this->nutrizione;
     }
 
-    public function setNutrizione($nutrizione) {
+    public function setNutrizione($nutrizione)
+    {
         $this->nutrizione = $nutrizione;
     }
-    
-
-
 }
